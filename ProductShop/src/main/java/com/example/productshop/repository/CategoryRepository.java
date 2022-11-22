@@ -2,7 +2,8 @@ package com.example.productshop.repository;
 
 import java.util.List;
 
-import com.example.product_shop.model.entity.Category;
+
+import com.example.productshop.model.entity.Category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

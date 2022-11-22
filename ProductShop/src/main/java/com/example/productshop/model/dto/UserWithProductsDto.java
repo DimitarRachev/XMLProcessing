@@ -2,7 +2,6 @@ package com.example.productshop.model.dto;
 
 
 
-import com.example.product_shop.model.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

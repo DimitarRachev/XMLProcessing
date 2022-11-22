@@ -4,14 +4,15 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import com.example.car_dealer.model.dto.SaleDetailsDto;
-import com.example.car_dealer.model.entity.Car;
-import com.example.car_dealer.model.entity.Customer;
-import com.example.car_dealer.model.entity.Sale;
-import com.example.car_dealer.repository.SaleRepository;
-import com.example.car_dealer.service.CustomerService;
-import com.example.car_dealer.service.SaleService;
-import com.example.car_dealer.util.CustomMapper;
+
+import com.example.cardealer.model.dto.SaleDetailsDto;
+import com.example.cardealer.model.entity.Car;
+import com.example.cardealer.model.entity.Customer;
+import com.example.cardealer.model.entity.Sale;
+import com.example.cardealer.repository.SaleRepository;
+import com.example.cardealer.service.CustomerService;
+import com.example.cardealer.service.SaleService;
+import com.example.cardealer.util.CustomMapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

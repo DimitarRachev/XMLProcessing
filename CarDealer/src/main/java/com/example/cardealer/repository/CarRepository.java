@@ -2,7 +2,8 @@ package com.example.cardealer.repository;
 
 import java.util.List;
 
-import com.example.car_dealer.model.entity.Car;
+
+import com.example.cardealer.model.entity.Car;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

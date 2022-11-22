@@ -3,9 +3,10 @@ package com.example.cardealer.service;
 import java.util.Collection;
 import java.util.List;
 
-import com.example.car_dealer.model.dto.CustomerExportDto;
-import com.example.car_dealer.model.dto.CustomerWithSalesDto;
-import com.example.car_dealer.model.entity.Customer;
+import com.example.cardealer.model.dto.CustomerExportDto;
+import com.example.cardealer.model.dto.CustomerWithSalesDto;
+import com.example.cardealer.model.entity.Customer;
+
 
 public interface CustomerService {
   long count();

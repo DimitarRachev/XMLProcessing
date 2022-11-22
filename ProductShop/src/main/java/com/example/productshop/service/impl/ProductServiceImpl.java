@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.product_shop.model.dto.ProductExportDto;
-import com.example.product_shop.model.entity.Product;
-import com.example.product_shop.repository.ProductRepository;
-import com.example.product_shop.service.ProductService;
 
-import org.modelmapper.Converter;
+import com.example.productshop.model.dto.ProductExportDto;
+import com.example.productshop.model.entity.Product;
+import com.example.productshop.repository.ProductRepository;
+import com.example.productshop.service.ProductService;
+
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;
 import org.springframework.stereotype.Service;

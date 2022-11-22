@@ -5,11 +5,12 @@ import java.util.Random;
 
 import javax.transaction.Transactional;
 
-import com.example.car_dealer.model.dto.CarExportDto;
-import com.example.car_dealer.model.dto.CarWithPartsListDto;
-import com.example.car_dealer.model.entity.Car;
-import com.example.car_dealer.repository.CarRepository;
-import com.example.car_dealer.service.CarService;
+
+import com.example.cardealer.model.dto.CarExportDto;
+import com.example.cardealer.model.dto.CarWithPartsListDto;
+import com.example.cardealer.model.entity.Car;
+import com.example.cardealer.repository.CarRepository;
+import com.example.cardealer.service.CarService;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

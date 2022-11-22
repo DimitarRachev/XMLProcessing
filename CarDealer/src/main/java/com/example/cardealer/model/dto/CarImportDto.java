@@ -3,7 +3,8 @@ package com.example.cardealer.model.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.car_dealer.model.entity.Part;
+
+import com.example.cardealer.model.entity.Part;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

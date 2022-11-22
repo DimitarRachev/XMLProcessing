@@ -4,8 +4,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import com.example.product_shop.model.dto.CategoryInfoDto;
-import com.example.product_shop.model.entity.Category;
+import com.example.productshop.model.dto.CategoryInfoDto;
+import com.example.productshop.model.entity.Category;
+
 
 public interface CategoryService {
   void save(Category category);

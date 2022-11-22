@@ -7,14 +7,15 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
-import com.example.product_shop.model.dto.AllUsersInfoDto;
-import com.example.product_shop.model.dto.ProductWithBuyerDto;
-import com.example.product_shop.model.dto.SellerWithProductsDto;
-import com.example.product_shop.model.dto.UserWithProductsDto;
-import com.example.product_shop.model.entity.Product;
-import com.example.product_shop.model.entity.User;
-import com.example.product_shop.repository.UserRepository;
-import com.example.product_shop.service.UserService;
+
+import com.example.productshop.model.dto.AllUsersInfoDto;
+import com.example.productshop.model.dto.ProductWithBuyerDto;
+import com.example.productshop.model.dto.SellerWithProductsDto;
+import com.example.productshop.model.dto.UserWithProductsDto;
+import com.example.productshop.model.entity.Product;
+import com.example.productshop.model.entity.User;
+import com.example.productshop.repository.UserRepository;
+import com.example.productshop.service.UserService;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

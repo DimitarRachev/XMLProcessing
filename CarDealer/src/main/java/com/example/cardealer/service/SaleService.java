@@ -3,10 +3,10 @@ package com.example.cardealer.service;
 import java.util.Collection;
 import java.util.List;
 
-import com.example.car_dealer.model.dto.SaleDetailsDto;
-import com.example.car_dealer.model.entity.Car;
-import com.example.car_dealer.model.entity.Customer;
-import com.example.car_dealer.model.entity.Sale;
+import com.example.cardealer.model.dto.SaleDetailsDto;
+import com.example.cardealer.model.entity.Car;
+import com.example.cardealer.model.entity.Customer;
+
 
 public interface SaleService {
 

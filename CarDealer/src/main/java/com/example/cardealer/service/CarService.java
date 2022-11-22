@@ -3,9 +3,10 @@ package com.example.cardealer.service;
 import java.util.Collection;
 import java.util.List;
 
-import com.example.car_dealer.model.dto.CarExportDto;
-import com.example.car_dealer.model.dto.CarWithPartsListDto;
-import com.example.car_dealer.model.entity.Car;
+import com.example.cardealer.model.dto.CarExportDto;
+import com.example.cardealer.model.dto.CarWithPartsListDto;
+import com.example.cardealer.model.entity.Car;
+
 
 public interface CarService {
   long count();

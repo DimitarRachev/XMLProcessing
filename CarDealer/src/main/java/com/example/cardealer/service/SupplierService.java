@@ -3,8 +3,9 @@ package com.example.cardealer.service;
 import java.util.Collection;
 import java.util.List;
 
-import com.example.car_dealer.model.dto.SupplierSimpleExportDto;
-import com.example.car_dealer.model.entity.Supplier;
+import com.example.cardealer.model.dto.SupplierSimpleExportDto;
+import com.example.cardealer.model.entity.Supplier;
+
 
 public interface SupplierService {
    void save(Supplier supplier);

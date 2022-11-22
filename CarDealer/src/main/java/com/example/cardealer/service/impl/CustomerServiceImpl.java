@@ -3,11 +3,12 @@ package com.example.cardealer.service.impl;
 import java.util.List;
 import java.util.Random;
 
-import com.example.car_dealer.model.dto.CustomerExportDto;
-import com.example.car_dealer.model.dto.CustomerWithSalesDto;
-import com.example.car_dealer.model.entity.Customer;
-import com.example.car_dealer.repository.CustomerRepository;
-import com.example.car_dealer.service.CustomerService;
+
+import com.example.cardealer.model.dto.CustomerExportDto;
+import com.example.cardealer.model.dto.CustomerWithSalesDto;
+import com.example.cardealer.model.entity.Customer;
+import com.example.cardealer.repository.CustomerRepository;
+import com.example.cardealer.service.CustomerService;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

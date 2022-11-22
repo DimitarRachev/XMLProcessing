@@ -2,11 +2,12 @@ package com.example.cardealer.util;
 
 import java.math.BigDecimal;
 
-import com.example.car_dealer.model.dto.CarSimpleExportDto;
-import com.example.car_dealer.model.dto.SaleDetailsDto;
-import com.example.car_dealer.model.entity.Car;
-import com.example.car_dealer.model.entity.Part;
-import com.example.car_dealer.model.entity.Sale;
+import com.example.cardealer.model.dto.CarSimpleExportDto;
+import com.example.cardealer.model.dto.SaleDetailsDto;
+import com.example.cardealer.model.entity.Car;
+import com.example.cardealer.model.entity.Part;
+import com.example.cardealer.model.entity.Sale;
+
 
 public class CustomMapper {
   public static SaleDetailsDto saleToSaleDetails(Sale sale) {

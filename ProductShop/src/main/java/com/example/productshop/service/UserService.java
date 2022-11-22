@@ -3,9 +3,10 @@ package com.example.productshop.service;
 import java.util.Collection;
 import java.util.List;
 
-import com.example.product_shop.model.dto.AllUsersInfoDto;
-import com.example.product_shop.model.dto.SellerWithProductsDto;
-import com.example.product_shop.model.entity.User;
+import com.example.productshop.model.dto.AllUsersInfoDto;
+import com.example.productshop.model.dto.SellerWithProductsDto;
+import com.example.productshop.model.entity.User;
+
 
 public interface UserService {
    void save(User user) ;

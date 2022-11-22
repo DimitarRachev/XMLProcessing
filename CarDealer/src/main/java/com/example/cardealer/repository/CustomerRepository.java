@@ -2,8 +2,9 @@ package com.example.cardealer.repository;
 
 import java.util.List;
 
-import com.example.car_dealer.model.dto.CustomerWithSalesDto;
-import com.example.car_dealer.model.entity.Customer;
+
+import com.example.cardealer.model.dto.CustomerWithSalesDto;
+import com.example.cardealer.model.entity.Customer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,7 +15,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
   List<Customer> findAllByOrderByBirthDateAscIsYoungDriverDesc();
 
-  @Query("select new com.example.car_dealer.model.dto.CustomerWithSalesDto( " +
+  @Query("select new com.example.cardealer.model.dto.CustomerWithSalesDto( " +
     "c.name, count(s), avg(p.price * s.discount)) "+
     "from Customer c " +
     "join c.sales  s " +

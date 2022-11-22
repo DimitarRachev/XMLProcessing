@@ -3,10 +3,11 @@ package com.example.cardealer.service.impl;
 import java.util.List;
 import java.util.Random;
 
-import com.example.car_dealer.model.dto.SupplierSimpleExportDto;
-import com.example.car_dealer.model.entity.Supplier;
-import com.example.car_dealer.repository.SupplierRepository;
-import com.example.car_dealer.service.SupplierService;
+
+import com.example.cardealer.model.dto.SupplierSimpleExportDto;
+import com.example.cardealer.model.entity.Supplier;
+import com.example.cardealer.repository.SupplierRepository;
+import com.example.cardealer.service.SupplierService;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeMap;

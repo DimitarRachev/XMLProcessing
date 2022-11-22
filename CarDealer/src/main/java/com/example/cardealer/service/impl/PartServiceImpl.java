@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.example.car_dealer.model.entity.Part;
-import com.example.car_dealer.repository.PartRepository;
-import com.example.car_dealer.service.PartService;
+
+import com.example.cardealer.model.entity.Part;
+import com.example.cardealer.repository.PartRepository;
+import com.example.cardealer.service.PartService;
 
 import org.springframework.stereotype.Service;
 

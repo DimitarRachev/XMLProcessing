@@ -7,15 +7,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
-import com.example.product_shop.model.dto.CategoryInfoDto;
-import com.example.product_shop.model.entity.Category;
-import com.example.product_shop.model.entity.Product;
-import com.example.product_shop.repository.CategoryRepository;
-import com.example.product_shop.service.CategoryService;
+
+import com.example.productshop.model.dto.CategoryInfoDto;
+import com.example.productshop.model.entity.Category;
+import com.example.productshop.model.entity.Product;
+import com.example.productshop.repository.CategoryRepository;
+import com.example.productshop.service.CategoryService;
 
 import org.springframework.stereotype.Service;
 

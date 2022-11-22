@@ -3,14 +3,18 @@ package com.example.productshop.service;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public interface SeedService {
- default void seedAll() throws IOException {
-   seedUsers();
-   seedCategories();
-   seedProducts();
- }
+import javax.xml.bind.JAXBException;
 
-void seedCategories() throws FileNotFoundException;
-void seedProducts() throws FileNotFoundException;
-void seedUsers() throws IOException;
+public interface SeedService {
+  default void seedAll() throws IOException, JAXBException {
+    seedCategories();
+    seedUsers();
+    seedProducts();
+  }
+
+  void seedCategories() throws FileNotFoundException, JAXBException;
+
+  void seedProducts() throws FileNotFoundException, JAXBException;
+
+  void seedUsers() throws IOException, JAXBException;
 }

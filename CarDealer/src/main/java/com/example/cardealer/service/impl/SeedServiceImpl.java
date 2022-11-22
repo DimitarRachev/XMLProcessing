@@ -20,6 +20,7 @@ import com.example.cardealer.model.dto.CarImportDto;
 import com.example.cardealer.model.dto.CustomerImportDto;
 import com.example.cardealer.model.dto.PartImportDto;
 import com.example.cardealer.model.dto.SupplierImportDto;
+import com.example.cardealer.model.dto.SupplierImportWrapperDto;
 import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.model.entity.Customer;
 import com.example.cardealer.model.entity.Part;
@@ -74,8 +75,7 @@ public class SeedServiceImpl implements SeedService {
   @Override public void seedParts() throws IOException, JAXBException {
     if (partService.count() == 0) {
       FileReader reader = FileManipulationFactory.getFileReader(PARTS_XML);
-      JAXBContext context = JAXBContext.newInstance(PartImportDto.class);
-      Unmarshaller unmarshaller = context.createUnmarshaller();
+      Unmarshaller unmarshaller = JAXBContext.newInstance(PartImportDto.class).createUnmarshaller();
       Arrays
         .stream((PartImportDto[]) unmarshaller.unmarshal(reader))
         .map(p -> mapper.map(p, Part.class))
@@ -88,10 +88,8 @@ public class SeedServiceImpl implements SeedService {
   @Override public void seedSuppliers() throws IOException, JAXBException {
     if (supplierService.count() == 0) {
       FileReader reader = FileManipulationFactory.getFileReader(SUPPLIER_XML);
-      JAXBContext context = JAXBContext.newInstance(SupplierImportDto.class);
-      Unmarshaller unmarshaller = context.createUnmarshaller();
-      Arrays
-        .stream((SupplierImportDto[]) unmarshaller.unmarshal(reader))
+      Unmarshaller unmarshaller = JAXBContext.newInstance(SupplierImportWrapperDto.class).createUnmarshaller();
+      ((SupplierImportWrapperDto) unmarshaller.unmarshal(reader)).getSuppliers().stream()
         .map(s -> mapper.map(s, Supplier.class))
         .forEach(supplierService::save);
       reader.close();
@@ -101,8 +99,7 @@ public class SeedServiceImpl implements SeedService {
   @Override public void seedCustomers() throws IOException, JAXBException {
     if (customerService.count() == 0) {
       FileReader reader = FileManipulationFactory.getFileReader(CUSTOMER_XML);
-      JAXBContext context = JAXBContext.newInstance(CustomerImportDto.class);
-      Unmarshaller unmarshaller = context.createUnmarshaller();
+      Unmarshaller unmarshaller = JAXBContext.newInstance(CustomerImportDto.class).createUnmarshaller();
       Arrays
         .stream((CustomerImportDto[]) unmarshaller.unmarshal(reader))
         .map(c -> mapper.map(c, Customer.class))
