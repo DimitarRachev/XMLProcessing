@@ -2,7 +2,7 @@ package com.example.productshop.model.dto;
 
 import java.util.List;
 
-import com.example.productshop.model.dto.newdos.ProductImportDto;
+import com.example.productshop.model.dto.importDto.ProductImportDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

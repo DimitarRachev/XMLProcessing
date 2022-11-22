@@ -1,9 +1,10 @@
-package com.example.productshop.model.dto.newdos;
+package com.example.productshop.model.dto.exportDto;
 
 import java.math.BigDecimal;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.AllArgsConstructor;
@@ -15,7 +16,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @XmlRootElement(name = "product")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ProductImportDto {
+public class ProductSimpleInfoExportDto {
+  @XmlAttribute(name = "name")
   private String name;
+  @XmlAttribute(name = "price")
   private BigDecimal price;
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.example.productshop.model.dto.CategoryInfoDto;
+import com.example.productshop.model.dto.exportDto.CategoriesExportWrapperDto;
 import com.example.productshop.model.entity.Category;
 
 
@@ -15,5 +16,5 @@ public interface CategoryService {
 
   long count();
 
-  List<CategoryInfoDto> findAllByProductCount();
+  CategoriesExportWrapperDto findAllByProductCount();
 }

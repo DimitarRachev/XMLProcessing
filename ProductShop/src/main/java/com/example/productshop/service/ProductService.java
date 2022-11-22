@@ -1,8 +1,7 @@
 package com.example.productshop.service;
 
-import java.util.List;
 
-import com.example.productshop.model.dto.ProductExportDto;
+import com.example.productshop.model.dto.exportDto.ProductExportWrapperDto;
 import com.example.productshop.model.entity.Product;
 
 
@@ -11,5 +10,5 @@ public interface ProductService {
 
   long count();
 
-  List<ProductExportDto> findAllWithPriceBetweenWithNoSeller(double lowerBound, double upperBound);
+  ProductExportWrapperDto findAllWithPriceBetweenWithNoSeller(double lowerBound, double upperBound);
 }

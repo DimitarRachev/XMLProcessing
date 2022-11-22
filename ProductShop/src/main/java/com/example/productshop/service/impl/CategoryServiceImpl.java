@@ -12,11 +12,14 @@ import javax.transaction.Transactional;
 
 
 import com.example.productshop.model.dto.CategoryInfoDto;
+import com.example.productshop.model.dto.exportDto.CategoriesExportWrapperDto;
+import com.example.productshop.model.dto.exportDto.CategoryInfoExportDto;
 import com.example.productshop.model.entity.Category;
 import com.example.productshop.model.entity.Product;
 import com.example.productshop.repository.CategoryRepository;
 import com.example.productshop.service.CategoryService;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +28,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
   private final CategoryRepository categoryRepository;
+  private final ModelMapper mapper;
   private final Random random;
 
   @Override public void save(Category category) {
@@ -48,13 +52,16 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Transactional
 
-  @Override public List<CategoryInfoDto> findAllByProductCount() {
-    return categoryRepository
+  @Override public CategoriesExportWrapperDto findAllByProductCount() {
+    CategoriesExportWrapperDto toReturn = new CategoriesExportWrapperDto();
+    categoryRepository
       .findAll()
       .stream()
       .map(this::makeCategoryInfoDto)
       .sorted(Comparator.comparing(CategoryInfoDto::getCategoryCount).reversed())
-      .toList();
+      .map(s -> mapper.map(s, CategoryInfoExportDto.class))
+      .forEach(s -> toReturn.getCategories().add(s));
+    return toReturn;
   }
 
   private CategoryInfoDto makeCategoryInfoDto(Category category) {

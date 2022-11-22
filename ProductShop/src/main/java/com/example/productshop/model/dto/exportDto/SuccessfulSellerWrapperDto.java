@@ -1,5 +1,6 @@
-package com.example.productshop.model.dto.newdos;
+package com.example.productshop.model.dto.exportDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -9,15 +10,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@XmlRootElement(name = "categories")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class CategoryImportDto {
+@XmlRootElement(name="users")
+public class SuccessfulSellerWrapperDto {
+  @XmlElement(name="user")
+  private List<UserWithSoldProductsDto> users;
 
-  @XmlElement(name = "category")
-  private List<CategoryNameDto> categories;
+
+  public SuccessfulSellerWrapperDto() {
+    users = new ArrayList<>();
+  }
 }

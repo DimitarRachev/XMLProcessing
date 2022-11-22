@@ -12,6 +12,10 @@ import com.example.productshop.model.dto.AllUsersInfoDto;
 import com.example.productshop.model.dto.ProductWithBuyerDto;
 import com.example.productshop.model.dto.SellerWithProductsDto;
 import com.example.productshop.model.dto.UserWithProductsDto;
+import com.example.productshop.model.dto.exportDto.SuccessfulSellerWrapperDto;
+import com.example.productshop.model.dto.exportDto.UserWithSoldProductsDto;
+import com.example.productshop.model.dto.exportDto.UsersAndProductsWrapperExportDto;
+import com.example.productshop.model.dto.exportDto.UsersWithProductsExportDto;
 import com.example.productshop.model.entity.Product;
 import com.example.productshop.model.entity.User;
 import com.example.productshop.repository.UserRepository;
@@ -43,23 +47,26 @@ public class UserServiceImpl implements UserService {
   }
 
   @Transactional
-  @Override public List<SellerWithProductsDto> findAllSuccessfullySellers() {
-    return userRepository.findAllByProductsSoldBuyerIsNotNull().get()
+  @Override public SuccessfulSellerWrapperDto findAllSuccessfullySellers() {
+    SuccessfulSellerWrapperDto toReturn = new SuccessfulSellerWrapperDto();
+     userRepository.findAllByProductsSoldBuyerIsNotNullOrderByLastNameAscFirstNameAsc()
+       .get()
       .stream()
       .map(UserServiceImpl::makeSellerWithProductDto)
-      .sorted(Comparator.comparing(SellerWithProductsDto::getLastName))
-      .toList();
+       .map(s -> mapper.map(s, UserWithSoldProductsDto.class))
+      .forEach(s -> toReturn.getUsers().add(s));
+    return toReturn;
   }
 
   @Transactional
-  @Override public AllUsersInfoDto getUsersAndProducts() {
+  @Override public UsersAndProductsWrapperExportDto getUsersAndProducts() {
+    UsersAndProductsWrapperExportDto toReturn = new UsersAndProductsWrapperExportDto();
 
-    List<UserWithProductsDto> userWithProductsDtos =
       userRepository.findAllByProductsSoldBuyerIsNotNullOrderByProductsSoldDescLastName()
         .stream()
-        .map(u -> mapper.map(u, UserWithProductsDto.class))
-        .collect(Collectors.toList());
-    return new AllUsersInfoDto(userWithProductsDtos);
+        .map(u -> mapper.map(u, UsersWithProductsExportDto.class))
+        .forEach(s -> toReturn.getUsers().add(s));
+    return toReturn;
   }
 
   private static SellerWithProductsDto makeSellerWithProductDto(User u) {

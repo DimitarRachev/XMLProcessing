@@ -11,9 +11,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import com.example.productshop.model.dto.newdos.CategoryImportDto;
-import com.example.productshop.model.dto.newdos.ProductImportWrapperDto;
-import com.example.productshop.model.dto.newdos.UserImportWrapperDto;
+import com.example.productshop.model.dto.importDto.CategoryImportDto;
+import com.example.productshop.model.dto.importDto.ProductImportWrapperDto;
+import com.example.productshop.model.dto.importDto.UserImportWrapperDto;
 import com.example.productshop.model.entity.Category;
 import com.example.productshop.model.entity.Product;
 import com.example.productshop.model.entity.User;

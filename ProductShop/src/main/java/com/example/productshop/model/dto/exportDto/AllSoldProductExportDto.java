@@ -1,9 +1,10 @@
-package com.example.productshop.model.dto.newdos;
+package com.example.productshop.model.dto.exportDto;
 
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -14,9 +15,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@XmlRootElement(name = "sold-products")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlRootElement(name = "users")
-public class UserImportWrapperDto {
-  @XmlElement(name = "user")
-  private List<UserImportDto> users;
+public class AllSoldProductExportDto {
+  @XmlAttribute(name = "count")
+  private Integer count;
+  @XmlElement(name = "product")
+  private List<ProductSimpleInfoExportDto> products;
+
 }

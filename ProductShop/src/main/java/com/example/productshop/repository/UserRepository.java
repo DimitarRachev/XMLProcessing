@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long> {
 
 
-Optional<List<User>> findAllByProductsSoldBuyerIsNotNull();
+Optional<List<User>> findAllByProductsSoldBuyerIsNotNullOrderByLastNameAscFirstNameAsc();
 
 List<User> findAllByProductsSoldBuyerIsNotNullOrderByProductsSoldDescLastName();
 }
