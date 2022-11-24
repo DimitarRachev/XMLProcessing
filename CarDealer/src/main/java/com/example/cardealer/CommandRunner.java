@@ -5,12 +5,12 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.example.cardealer.model.dto.exportDto.CustomerWithSalesDto;
-import com.example.cardealer.model.dto.SaleDetailsDto;
+import com.example.cardealer.model.dto.exportDto.SaleDetailsDto;
 import com.example.cardealer.model.dto.exportDto.CarExportWrapperDto;
 import com.example.cardealer.model.dto.exportDto.CarWithPartsListWrapperDto;
 import com.example.cardealer.model.dto.exportDto.CustomerExportWrapperDto;
 import com.example.cardealer.model.dto.exportDto.CustomerWithSalesWrapperDto;
+import com.example.cardealer.model.dto.exportDto.SaleDetailsWrapperDto;
 import com.example.cardealer.model.dto.exportDto.SupplierSimpleExportWrapperDto;
 import com.example.cardealer.service.CarService;
 import com.example.cardealer.service.CustomerService;
@@ -43,8 +43,10 @@ public class CommandRunner implements CommandLineRunner {
   }
 
   private void getSalesWithDiscount() throws JAXBException {
-    JAXBContext.newInstance(SaleDetailsDto.class)
-      .createMarshaller()
+    Marshaller marshaller = JAXBContext.newInstance(SaleDetailsWrapperDto.class)
+      .createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    marshaller
       .marshal(saleService.getSalesWithDiscount(), System.out);
   }
 

@@ -2,8 +2,8 @@ package com.example.cardealer.util;
 
 import java.math.BigDecimal;
 
-import com.example.cardealer.model.dto.CarSimpleExportDto;
-import com.example.cardealer.model.dto.SaleDetailsDto;
+import com.example.cardealer.model.dto.exportDto.CarSimpleExportDto;
+import com.example.cardealer.model.dto.exportDto.SaleDetailsDto;
 import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.model.entity.Part;
 import com.example.cardealer.model.entity.Sale;

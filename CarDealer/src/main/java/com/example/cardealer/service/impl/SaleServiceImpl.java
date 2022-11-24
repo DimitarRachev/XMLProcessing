@@ -5,7 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 
-import com.example.cardealer.model.dto.SaleDetailsDto;
+import com.example.cardealer.model.dto.exportDto.SaleDetailsDto;
+import com.example.cardealer.model.dto.exportDto.SaleDetailsWrapperDto;
 import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.model.entity.Customer;
 import com.example.cardealer.model.entity.Sale;
@@ -35,13 +36,14 @@ public class SaleServiceImpl implements SaleService {
   }
 
   @Transactional
-  @Override public List<SaleDetailsDto> getSalesWithDiscount() {
-
-    return saleRepository
+  @Override public SaleDetailsWrapperDto getSalesWithDiscount() {
+    SaleDetailsWrapperDto toReturn = new SaleDetailsWrapperDto();
+     saleRepository
       .findAll()
       .stream()
       .map(CustomMapper::saleToSaleDetails)
-      .toList();
+      .forEach(s -> toReturn.getSales().add(s));
+    return toReturn;
   }
 
   @Override public long count() {
