@@ -3,7 +3,7 @@ package com.example.cardealer.repository;
 import java.util.List;
 
 
-import com.example.cardealer.model.dto.CustomerWithSalesDto;
+import com.example.cardealer.model.dto.exportDto.CustomerWithSalesDto;
 import com.example.cardealer.model.entity.Customer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,7 +15,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
   List<Customer> findAllByOrderByBirthDateAscIsYoungDriverDesc();
 
-  @Query("select new com.example.cardealer.model.dto.CustomerWithSalesDto( " +
+  @Query("select new com.example.cardealer.model.dto.exportDto.CustomerWithSalesDto( " +
     "c.name, count(s), avg(p.price * s.discount)) "+
     "from Customer c " +
     "join c.sales  s " +

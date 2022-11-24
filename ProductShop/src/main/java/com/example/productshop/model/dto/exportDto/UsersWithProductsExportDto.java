@@ -1,5 +1,6 @@
 package com.example.productshop.model.dto.exportDto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -7,6 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.example.productshop.model.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,5 +28,11 @@ public class UsersWithProductsExportDto {
   @XmlAttribute(name = "age")
   private Integer age;
   @XmlElement(name = "sold-products")
-  private List<AllSoldProductExportDto> soldProducts;
+  private AllSoldProductExportDto soldProducts;
+
+  public UsersWithProductsExportDto(User user) {
+    this.firstName = user.getFirstName() == null ? null : user.getFirstName();
+    this.lastName = user.getLastName();
+    this.soldProducts = new AllSoldProductExportDto(user.getProductsSold());
+  }
 }

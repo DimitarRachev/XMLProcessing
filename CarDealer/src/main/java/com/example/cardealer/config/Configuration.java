@@ -19,4 +19,6 @@ public class Configuration {
   public Random random() {
     return new Random();
   }
+
+
 }

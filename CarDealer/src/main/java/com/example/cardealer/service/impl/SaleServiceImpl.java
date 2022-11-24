@@ -43,4 +43,8 @@ public class SaleServiceImpl implements SaleService {
       .map(CustomMapper::saleToSaleDetails)
       .toList();
   }
+
+  @Override public long count() {
+    return saleRepository.count();
+  }
 }

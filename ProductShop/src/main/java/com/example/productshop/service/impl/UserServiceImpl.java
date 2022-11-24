@@ -8,10 +8,12 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 
+import com.example.productshop.model.dto.AllSoldProductsDto;
 import com.example.productshop.model.dto.AllUsersInfoDto;
 import com.example.productshop.model.dto.ProductWithBuyerDto;
 import com.example.productshop.model.dto.SellerWithProductsDto;
 import com.example.productshop.model.dto.UserWithProductsDto;
+import com.example.productshop.model.dto.exportDto.AllSoldProductExportDto;
 import com.example.productshop.model.dto.exportDto.SuccessfulSellerWrapperDto;
 import com.example.productshop.model.dto.exportDto.UserWithSoldProductsDto;
 import com.example.productshop.model.dto.exportDto.UsersAndProductsWrapperExportDto;
@@ -22,6 +24,7 @@ import com.example.productshop.repository.UserRepository;
 import com.example.productshop.service.UserService;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeMap;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -60,13 +63,7 @@ public class UserServiceImpl implements UserService {
 
   @Transactional
   @Override public UsersAndProductsWrapperExportDto getUsersAndProducts() {
-    UsersAndProductsWrapperExportDto toReturn = new UsersAndProductsWrapperExportDto();
-
-      userRepository.findAllByProductsSoldBuyerIsNotNullOrderByProductsSoldDescLastName()
-        .stream()
-        .map(u -> mapper.map(u, UsersWithProductsExportDto.class))
-        .forEach(s -> toReturn.getUsers().add(s));
-    return toReturn;
+    return new UsersAndProductsWrapperExportDto(userRepository.findAllByProductsSoldBuyerIsNotNullOrderByProductsSoldDescLastName());
   }
 
   private static SellerWithProductsDto makeSellerWithProductDto(User u) {

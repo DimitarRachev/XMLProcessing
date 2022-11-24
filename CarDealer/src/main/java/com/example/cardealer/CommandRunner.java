@@ -5,12 +5,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.example.cardealer.model.dto.CarExportDto;
-import com.example.cardealer.model.dto.CarWithPartsListDto;
-import com.example.cardealer.model.dto.CustomerExportDto;
-import com.example.cardealer.model.dto.CustomerWithSalesDto;
+import com.example.cardealer.model.dto.exportDto.CustomerWithSalesDto;
 import com.example.cardealer.model.dto.SaleDetailsDto;
-import com.example.cardealer.model.dto.SupplierSimpleExportDto;
+import com.example.cardealer.model.dto.exportDto.CarExportWrapperDto;
+import com.example.cardealer.model.dto.exportDto.CarWithPartsListWrapperDto;
+import com.example.cardealer.model.dto.exportDto.CustomerExportWrapperDto;
+import com.example.cardealer.model.dto.exportDto.CustomerWithSalesWrapperDto;
+import com.example.cardealer.model.dto.exportDto.SupplierSimpleExportWrapperDto;
 import com.example.cardealer.service.CarService;
 import com.example.cardealer.service.CustomerService;
 import com.example.cardealer.service.SaleService;
@@ -33,12 +34,12 @@ public class CommandRunner implements CommandLineRunner {
 
   @Override public void run(String... args) throws Exception {
     seedService.seedAll();
-    //    orderedCustomers();
-    //    getAllByMaker("Toyota");
-    //    getLocalSuppliers();
-    //    getCarsWithPartsList();
-    //    getTotalSalesByCustomer();
-//    getSalesWithDiscount();
+//    orderedCustomers();
+//        getAllByMaker("Toyota");
+//        getLocalSuppliers();
+//        getCarsWithPartsList();
+//        getTotalSalesByCustomer();
+        getSalesWithDiscount();
   }
 
   private void getSalesWithDiscount() throws JAXBException {
@@ -48,32 +49,43 @@ public class CommandRunner implements CommandLineRunner {
   }
 
   private void getTotalSalesByCustomer() throws JAXBException {
-    JAXBContext.newInstance(CustomerWithSalesDto.class)
-      .createMarshaller()
+    Marshaller marshaller = JAXBContext.newInstance(CustomerWithSalesWrapperDto.class)
+      .createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    marshaller
       .marshal(customerService.getTotalSalesByCustomer(), System.out);
   }
 
   private void getCarsWithPartsList() throws JAXBException {
-    JAXBContext.newInstance(CarWithPartsListDto.class)
-      .createMarshaller()
+    Marshaller marshaller = JAXBContext.newInstance(CarWithPartsListWrapperDto.class)
+      .createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    marshaller
       .marshal(carService.getCarsWithPartsList(), System.out);
   }
 
   private void getLocalSuppliers() throws JAXBException {
-    JAXBContext.newInstance(SupplierSimpleExportDto.class)
-      .createMarshaller()
+    Marshaller marshaller = JAXBContext.newInstance(SupplierSimpleExportWrapperDto.class)
+      .createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    marshaller
       .marshal(supplierService.getLocalSuppliers(), System.out);
   }
 
   private void getAllByMaker(String make) throws JAXBException {
-    JAXBContext.newInstance(CarExportDto.class)
-      .createMarshaller()
+    JAXBContext context = JAXBContext.newInstance(CarExportWrapperDto.class);
+    Marshaller marshaller = context
+      .createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    marshaller
       .marshal(carService.getAllToyotas(make), System.out);
   }
 
   private void orderedCustomers() throws JAXBException {
-    JAXBContext.newInstance(CustomerExportDto.class)
-      .createMarshaller()
+    Marshaller marshaller = JAXBContext.newInstance(CustomerExportWrapperDto.class)
+      .createMarshaller();
+    marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+    marshaller
       .marshal(customerService.findAllOrderedByBirthDateAndYoung(), System.out);
   }
 }

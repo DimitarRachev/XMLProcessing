@@ -6,8 +6,10 @@ import java.util.Random;
 import javax.transaction.Transactional;
 
 
-import com.example.cardealer.model.dto.CarExportDto;
-import com.example.cardealer.model.dto.CarWithPartsListDto;
+import com.example.cardealer.model.dto.exportDto.CarExportDto;
+import com.example.cardealer.model.dto.exportDto.CarWithPartsListDto;
+import com.example.cardealer.model.dto.exportDto.CarExportWrapperDto;
+import com.example.cardealer.model.dto.exportDto.CarWithPartsListWrapperDto;
 import com.example.cardealer.model.entity.Car;
 import com.example.cardealer.repository.CarRepository;
 import com.example.cardealer.service.CarService;
@@ -37,21 +39,24 @@ public class CarServiceImpl implements CarService {
     return carRepository.findById(id).orElseThrow(RuntimeException::new);
   }
 
-  @Override public List<CarExportDto> getAllToyotas(String make) {
-    return carRepository
+  @Override public CarExportWrapperDto getAllToyotas(String make) {
+    CarExportWrapperDto toReturn = new CarExportWrapperDto();
+     carRepository
       .findAllByMakeOrderByModelAscTravelledDistanceDesc(make)
       .stream()
       .map(c -> mapper.map(c, CarExportDto.class))
-      .toList();
+      .forEach(s -> toReturn.getCars().add(s));
+     return toReturn;
   }
 
   @Transactional
-  @Override public List<CarWithPartsListDto> getCarsWithPartsList() {
-
-    return carRepository.
+  @Override public CarWithPartsListWrapperDto getCarsWithPartsList() {
+    CarWithPartsListWrapperDto toReturn = new CarWithPartsListWrapperDto();
+   carRepository.
       findAll()
       .stream()
       .map(c -> mapper.map(c, CarWithPartsListDto.class))
-      .toList();
+      .forEach(s ->toReturn.getCars().add(s));
+    return toReturn;
   }
 }

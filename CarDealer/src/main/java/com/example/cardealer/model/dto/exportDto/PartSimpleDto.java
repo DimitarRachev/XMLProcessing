@@ -1,4 +1,4 @@
-package com.example.productshop.model.dto.exportDto;
+package com.example.cardealer.model.dto.exportDto;
 
 import java.math.BigDecimal;
 
@@ -7,8 +7,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.example.productshop.model.entity.Product;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,16 +14,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@XmlRootElement(name = "product")
+@XmlRootElement(name = "part")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ProductSimpleInfoExportDto {
-  @XmlAttribute(name = "name")
+public class PartSimpleDto {
+  @XmlAttribute
   private String name;
-  @XmlAttribute(name = "price")
+  @XmlAttribute
   private BigDecimal price;
-
-  public ProductSimpleInfoExportDto(Product product) {
-    this.name = product.getName();
-    this.price = product.getPrice();
-  }
 }

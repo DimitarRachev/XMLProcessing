@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Random;
 
 
-import com.example.cardealer.model.dto.SupplierSimpleExportDto;
+import com.example.cardealer.model.dto.exportDto.SupplierSimpleExportDto;
+import com.example.cardealer.model.dto.exportDto.SupplierSimpleExportWrapperDto;
 import com.example.cardealer.model.entity.Supplier;
 import com.example.cardealer.repository.SupplierRepository;
 import com.example.cardealer.service.SupplierService;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeMap;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -35,8 +35,9 @@ public class SupplierServiceImpl implements SupplierService {
     return repository.findById(id).orElseThrow(RuntimeException::new);
   }
 
-  @Override public List<SupplierSimpleExportDto> getLocalSuppliers() {
-
-    return repository.findAllByIsImporterFalse();
+  @Override public SupplierSimpleExportWrapperDto getLocalSuppliers() {
+    SupplierSimpleExportWrapperDto toReturn = new SupplierSimpleExportWrapperDto();
+    repository.findAllByIsImporterFalse().forEach(s -> toReturn.getSuppliers().add(s));
+    return toReturn;
   }
 }

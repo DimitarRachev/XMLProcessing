@@ -10,10 +10,10 @@ import lombok.RequiredArgsConstructor;
 public interface SeedService {
   default void seedAll() throws IOException, JAXBException {
     seedSuppliers();
-//    seedParts();
-//    seedCars();
-//    seedCustomers();
-//    seedSales();
+    seedParts();
+    seedCars();
+    seedCustomers();
+    seedSales();
   }
 
    void seedSales();

@@ -13,4 +13,6 @@ public interface SaleService {
   void save(Car car, Customer customer, Double discount);
 
   List<SaleDetailsDto> getSalesWithDiscount();
+
+  long count();
 }
